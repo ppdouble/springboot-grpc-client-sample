@@ -27,9 +27,6 @@ public class ScoreCalculatorController {
     public String calculateCityScore(@RequestParam Map<String, Object> scoreCalculatorParaMap) {
 
         System.out.println(scoreCalculatorParaMap.values());
-        //ObjectMapper objectMapper = new ObjectMapper();
-       // ScoreCalculatorService scoreCalculatorService = new ScoreCalculatorServiceImpl();
-
         ScoreCalculatorRequest scoreCalculatorRequest = objectMapper.convertValue(scoreCalculatorParaMap, ScoreCalculatorRequest.class);
 
         JsonObject jsonObject = new JsonObject();

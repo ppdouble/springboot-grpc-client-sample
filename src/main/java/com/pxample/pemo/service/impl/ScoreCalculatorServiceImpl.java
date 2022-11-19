@@ -41,6 +41,7 @@ public class ScoreCalculatorServiceImpl implements ScoreCalculatorService {
             return cityScoreResponse.getCityScore();
         } catch (StatusRuntimeException e) {
             System.out.println("Get reqponse failure ");
+            System.out.println("Exception: " + e.getClass().getName());
             System.out.println("Exception Message: " + e.getMessage());
             System.out.println("Exception Cause: " + e.getCause());
             System.out.println("Exception Stack Trace: ");
