@@ -1,4 +1,13 @@
 
+## The starter with grpc client
+
+```xml
+<dependency>
+    <groupId>net.devh</groupId>
+    <artifactId>grpc-client-spring-boot-starter</artifactId>
+    <version>2.13.0.RELEASE</version>
+</dependency>
+```
 ## @GrpcClient
 ```java
     @GrpcClient("cityscoreclient")
