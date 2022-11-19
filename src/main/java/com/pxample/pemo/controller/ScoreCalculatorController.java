@@ -1,5 +1,7 @@
 package com.pxample.pemo.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.pxample.pemo.model.ScoreCalculatorRequest;
 import com.pxample.pemo.service.ScoreCalculatorService;
 import com.pxample.pemo.service.impl.ScoreCalculatorServiceImpl;
@@ -15,16 +17,24 @@ import java.util.Map;
 @RestController
 public class ScoreCalculatorController {
 
+    @Autowired
+    ScoreCalculatorService scoreCalculatorService;
+
+    @Autowired
+    ObjectMapper objectMapper;
+
     @GetMapping("/cal-score")
-    public BigInteger calculateCityScore(@RequestParam Map<String, Object> scoreCalculatorParaMap) {
+    public String calculateCityScore(@RequestParam Map<String, Object> scoreCalculatorParaMap) {
 
         System.out.println(scoreCalculatorParaMap.values());
-        ObjectMapper objectMapper = new ObjectMapper();
-        ScoreCalculatorService scoreCalculatorService = new ScoreCalculatorServiceImpl();
+        //ObjectMapper objectMapper = new ObjectMapper();
+       // ScoreCalculatorService scoreCalculatorService = new ScoreCalculatorServiceImpl();
 
         ScoreCalculatorRequest scoreCalculatorRequest = objectMapper.convertValue(scoreCalculatorParaMap, ScoreCalculatorRequest.class);
 
-        return scoreCalculatorService.calculateScore(scoreCalculatorRequest);
-
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("city_score", scoreCalculatorService.calculateScore(scoreCalculatorRequest));
+        System.out.println(jsonObject);
+        return jsonObject.toString();
     }
 }
