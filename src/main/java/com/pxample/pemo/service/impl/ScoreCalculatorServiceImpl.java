@@ -35,6 +35,8 @@ public class ScoreCalculatorServiceImpl implements ScoreCalculatorService {
         try {
             System.out.println(cityScoreRequest.getCityCode());
             // sending request and get response
+            // Using stub to perform a remote procedure call, e.g. sending request
+            // Using stub to execute the function, calculateCityScore(), which is implemented on server
             CityScoreResponse cityScoreResponse = citysScoreStub.calculateCityScore(cityScoreRequest);
             System.out.println(cityScoreResponse.getCityScore());
             // resolve response and return value
